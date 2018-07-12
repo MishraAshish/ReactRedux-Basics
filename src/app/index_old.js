@@ -1,8 +1,37 @@
-import React from "react";
-import {render} from "react-dom";
+// import React from "react";
+// import {render} from "react-dom";
+
+// import { User } from './components/User';
+// import { Main } from './components/Main';
+
+// class App extends React.Component {
+//     constructor() {
+//         super();
+//         this.state = {
+//             username: "Max"
+//         };
+//     }
+
+//     changeUsername(newName) {
+//         this.setState({
+//             username: newName
+//         });
+//     }
+
+//     render() {
+//         return (
+//             <div className="container">
+//                 <Main changeUsername={this.changeUsername.bind(this)}/>
+//                 <User username={this.state.username}/>
+//             </div>
+//         );
+//     }
+// }
+
+// render(<App />, window.document.getElementById('app'));
+
+// https://www.youtube.com/watch?v=ZKCYqJu4n3s&list=PL55RiY5tL51rrC3sh8qLiYHqUV3twEYU_&index=3
 import {createStore, combineReducers, applyMiddleware} from "redux";
-import {Provider} from "react-redux";
-import App from "./components/App";
 
 const initialState = {
     result: 1,
@@ -62,18 +91,33 @@ const myLogger = (store) => (next) => (action) => {
     next(action);
 };
 
-const store = createStore(combineReducers(
-    {mathReducer, userReducer}), 
-    {}, applyMiddleware(myLogger)
-);
+const store = createStore(combineReducers({mathReducer, userReducer}), {}, applyMiddleware(myLogger));
 
 store.subscribe(() => {
     console.log("store updated!" + JSON.stringify(store.getState()));
+})
+
+store.dispatch({
+    type:"ADD",
+    payload:10
 });
 
-render(
-        <Provider store={store}>
-            <App />
-        </Provider>, 
-    window.document.getElementById('app')
-);
+store.dispatch({
+    type:"ADD",
+    payload:111
+});
+
+store.dispatch({
+    type:"MULTIPLY",
+    payload:10
+});
+
+store.dispatch({
+    type:"SET_NAME",
+    payload:"Ashish Mishra"
+});
+
+store.dispatch({
+    type:"SET_AGE",
+    payload:30
+});
