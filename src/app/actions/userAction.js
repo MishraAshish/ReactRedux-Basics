@@ -43,7 +43,8 @@ export function setName(name){
                     })
                     .catch(error => {
                         reject(error);
-                        //dispatch(error);
+                        //dispatch(error); -- promise Issue
+                        //https://github.com/pburtchaell/redux-promise-middleware/issues/24
                     })
                 })
             }       
