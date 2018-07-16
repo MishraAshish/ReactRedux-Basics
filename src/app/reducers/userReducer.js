@@ -5,7 +5,7 @@ const userReducer = (state = {
     switch (action.type) {
         case "SET_NAME_FULFILLED":
             state = {
-                //...state,
+                ...state,
                 name: action.payload
             };              
             break;

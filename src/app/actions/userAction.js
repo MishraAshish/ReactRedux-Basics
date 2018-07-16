@@ -1,5 +1,3 @@
-//import { resolve } from "dns";
-//import { rejects } from "assert";
 import { setTimeout } from "timers";
 import { resolve } from "url";
 
@@ -38,14 +36,14 @@ export function setName(name){
                         error => console.log('An error occurred.', error)
                     ).then(json => {
                         // want to updatePath for the route here:
-                        //dispatch(updatePath('/'));
-                        resolve(json[6]["Desc"]);
+                        //dispatch(updatePath('/'));                        
+                        resolve(json ? json[6]["Desc"] : "Test Me");                                                
                     })
                     .catch(error => {
                         reject(error);
                         //dispatch(error); -- promise Issue
                         //https://github.com/pburtchaell/redux-promise-middleware/issues/24
-                    })
+                    })                    
                 })
             }       
     }; 
