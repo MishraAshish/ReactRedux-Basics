@@ -6,11 +6,10 @@
 class User extends React.Component {
     constructor(props){        
         super();
-        // this.state = {
-        //     user : props.user
-        // }
-    }
-
+        this.state = {
+            user : props.user
+        }
+    } 
     render() {    
         return (
                 <div className="container">
